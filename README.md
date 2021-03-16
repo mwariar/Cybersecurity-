@@ -80,7 +80,7 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 |Web-4   |Virtual Server with ELK Stack (Monitoring           |10.1.0.4       |13.83.87.195  |Linux                |
 
 
-![Virtual Machines](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Virtual Machines.PNG)
+![Virtual Machines](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Virtual_Machines.PNG)
 
 ### Access Policies
 
@@ -119,11 +119,73 @@ Ansible was used to automate configuration of the ELK machine. No configuration 
 The playbook implements the following tasks:
 
 ````
-- Install Docker.io 
-- Install Python by running `apt install python3-pip`
+- Install **Docker.io** 
+- Install Python by running **apt install python3-pip**
 - Install Pip Docker Python Module
-- Increase the virtual Memory by running sysctl ansible module and increase the vm.max_map_count = 262144
-- Install the ELK Stack by pulling sebp/elk:761 container image from hub.docker.com and opening the respective ports (5601, 9200, 5044)
-- Enable the Docker Services on Starup
+- Increase the virtual Memory by running sysctl ansible module and increase the **vm.max_map_count = 262144**
+- Install the ELK Stack by pulling **sebp/elk:761** container image from hub.docker.com and opening the respective ports (5601, 9200, 5044)
+- Enable the Docker Services on Startup
 
 ````
+
+The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
+
+![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Docker_PS_Image.PNG)
+
+### Target Machines & Beats
+
+This ELK server is configured to monitor the following machines:
+
+| Name   | IP Address    |
+|--------|---------------|
+|Web-1   |10.0.0.5       |
+|Web-2   |10.0.0.7       |
+|Web-3   |10.0.0.6       |
+
+We have installed the following Beats on these machines:
+-** FileBeat **
+	- Acts as an agent for forwarding and centralizing log data on your servers
+	- Monitors the log files or locations that you specify, collects log events, and forwards them either to Logstash for indexing
+
+-** MetricBeat**
+	- Acts as an agent to periodically collect metrics from the operating system and from services running on the server. 
+	- Sends the metrics and statistics that it collects to Elasticsearch
+
+
+### Using the Playbook
+In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
+
+The steps to configure ELK stack has been mentioned ablove. 
+
+SSH into the control node and follow the steps below to configure Beats into target machines:
+
+- Download the installation file for Filebeat by running below command
+	'curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-oss-7.8.1-amd64.deb'
+- Install the Filebeat Package by running below command
+	'dpkg -i filebeat-oss-7.8.1-amd64.deb'
+- Download the filebeat congfigration file to the container
+	`curl https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat > /etc/ansible/filebeat-config.yml'
+- Update the host field with your ELK-VM's IP address. Copy this configration file from ansible container to target machine so that the logs are correctly shipped to Logstash and KibanaYou can use the copy ansible module
+````	
+	copy:
+          src: /etc/ansible/filebeat-config.yml 
+          dest: /etc/filebeat/filebeat.yml
+
+````
+- Enable the filebeat modules 'filebeat modules enable system'
+- Setup the filebeat 'filebeat setup' 
+- Start the filebeat service 'service filebeat start' 
+- Enable the filebeat service on boot
+
+````	
+    systemd:
+      name: filebeat
+      enabled: yes
+````
+- Update the `**/etc/ansible/hosts**` file with specific blocks and IP address and refer to that block in hosts tab in playbook
+- Compile the [FileBeat Playbook File](https://github.com/mwariar/Cybersecurity-/blob/main/Ansible/filebeats_play.yml)
+- Check whether the ansible in able to target the target machines by running the below code:
+	`**ansible all -m ping**`
+- If the ping is successful, we can deploy the Beats to the VM by running below command:
+	`**anisble-playbook filebeats_play.yml**`
+- To check whether the log data is getting shipped to Logstash, we can visit the [Kibana website](http://20.51.230.217:5601/app/kibana#/home)
