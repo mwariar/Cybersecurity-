@@ -1,0 +1,53 @@
+nano 2.9.3                                                                                                                  playbook2_elk.yml                                                                                                                            
+---
+- name: My first Playbook
+  hosts: elk
+  become: true
+  tasks:
+
+  - name: Install Docker
+    apt:
+      name: docker.io
+      state: present
+      force_apt_get: yes
+      update_cache: yes
+
+  - name: Install pip3
+    apt:
+      name: python3-pip
+      state: present
+      force_apt_get: yes
+
+  - name: Install Docker Phython module
+    pip:
+      name: docker
+      state: present
+
+  - name: Increase virtual memory
+    sysctl:
+      name: vm.max_map_count
+      value: "262144"
+      state: present
+      reload: yes
+
+
+  - name: Install Elk Container
+    docker_container:
+      name: elk
+      image: sebp/elk:761
+      state: started
+      restart_policy: always
+      published_ports:
+        - 5601:5601
+        - 9200:9200
+        - 5044:5044
+
+  - name: Enable docker services on startup
+    systemd:
+      name: docker
+      enabled: yes
+
+
+
+
+

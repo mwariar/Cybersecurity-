@@ -1,0 +1,34 @@
+
+---
+- name: My first Playbook
+  hosts: playbeat
+  become: true
+  tasks:
+
+  - name: Installing Filebeat
+    command: curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-oss-7.8.1-amd64.deb
+
+  - name: Installing Filebeat package
+    command: dpkg -i filebeat-oss-7.8.1-amd64.deb
+
+  - name: copying config file from ansible to remote locaiton
+    copy:
+      src: /etc/ansible/filebeat-config.yml
+      dest: /etc/filebeat/filebeat.yml
+
+  - name: filebeat modules enable system
+    command: filebeat modules enable system
+
+  - name: filebeat setup
+    command: filebeat setup
+
+  - name: service filebeat start
+    command: service filebeat start
+
+  - name: Enable the filebeat service on boot
+    systemd:
+      name: filebeat
+      enabled: yes
+
+
+

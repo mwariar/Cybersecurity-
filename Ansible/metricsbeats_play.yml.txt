@@ -1,0 +1,35 @@
+ GNU nano 2.9.3                                                                                                                metricsbeats_play.yml                                                                                                                          
+---
+- name: My first Playbook
+  hosts: playbeat
+  become: true
+  tasks:
+
+  - name: Installing Filebeat
+    command: curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.6.2-amd64.deb
+
+  - name: Installing Filebeat package
+    command: dpkg -i metricbeat-7.6.2-amd64.deb
+
+  - name: copying config file from ansible to remote locaiton
+    copy:
+      src: ~/metricbeats_config.yml
+      dest: /etc/metricbeat/metricbeat.yml
+
+  - name: metricbeat modules enable docker
+    command: metricbeat modules enable docker
+
+  - name: metricbeat setup
+    command: metricbeat setup
+
+  - name: service metricbeat start
+    command: service metricbeat start
+
+  - name: Enable the metricbeat service on boot
+    systemd:
+      name: metricbeat
+      enabled: yes
+
+
+
+
