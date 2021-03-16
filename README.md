@@ -3,4 +3,4 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![Network Diagram](Images/Network_Diagram.png)
+![Network Diagram](https://github.com/mwariar/Cybersecurity-/tree/main/Images/Network_Diagram.png)
