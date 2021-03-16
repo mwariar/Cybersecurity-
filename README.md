@@ -64,7 +64,7 @@ Network Security is a major factor in cloud computing and needs to be monitors a
 	- Create visualizations for application and infrastructure monitoring, faster troubleshooting, security analytics etc. in **Kibana**
 - Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the auth and system logs.  
 - Auth and system logs have huge amount of data but we might need only specific details to monitor the logs. Beats application helps in extracting only the specific details to be stored in Logstash. Few examples are:
-	- **FileBeat **
+	- **FileBeat**
 		- Acts as an agent for forwarding and centralizing log data on your servers
 		- Monitors the log files or locations that you specify, collects log events, and forwards them either to Logstash for indexing
 
@@ -72,13 +72,13 @@ Network Security is a major factor in cloud computing and needs to be monitors a
 		- Acts as an agent to periodically collect metrics from the operating system and from services running on the server. 
 		- Sends the metrics and statistics that it collects to Elasticsearch
 
-| Name   |  Function                                          | IP Address    |  Public IP   |  Operating System   |
-|--------|----------------------------------------------------|---------------|--------------|---------------------|
-|JBox    |SSH Gateway and Anisble Docker Container            |10.0.0.4       |13.83.87.195  |Linux                |
-|Web-1   |Virtual Server with PVBA Docker Container and Beats |10.0.0.5       |104.42.41.103 |Linux                |
-|Web-2   |Virtual Server with PVBA Docker Container and Beats |10.0.0.7       |104.42.41.103 |Linux                |
-|Web-3   |Virtual Server with PVBA Docker Container and Beats |10.0.0.6       |104.42.41.103 |Linux                |
-|Web-4   |Virtual Server with ELK Stack (Monitoring           |10.1.0.4       |13.83.87.195  |Linux                |
+| Name     |  Function                                          | IP Address    |  Public IP   |  Operating System   |
+|----------|----------------------------------------------------|---------------|--------------|---------------------|
+|JBox      |SSH Gateway and Anisble Docker Container            |10.0.0.4       |13.83.87.195  |Linux                |
+|Web-1     |Virtual Server with PVBA Docker Container and Beats |10.0.0.5       |104.42.41.103 |Linux                |
+|Web-2     |Virtual Server with PVBA Docker Container and Beats |10.0.0.7       |104.42.41.103 |Linux                |
+|Web-3     |Virtual Server with PVBA Docker Container and Beats |10.0.0.6       |104.42.41.103 |Linux                |
+|Web-4     |Virtual Server with ELK Stack (Monitoring           |10.1.0.4       |13.83.87.195  |Linux                |
 
 
 ![Virtual Machines](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Virtual_Machines.PNG)
