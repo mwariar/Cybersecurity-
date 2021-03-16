@@ -38,7 +38,7 @@
  ![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/Launch_playbook.png)
 
 	
-  	![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/Launch_playbook2.png)
+ ![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/Launch_playbook2.png)
 
 
 - SSH to Web-4 VM and check if docker image and container are running
@@ -47,7 +47,8 @@
  
 ## Part 5: Identity and Access Management
 
- 	![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/Security_rules.png) 
+
+   ![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/Security_rules.png)
 
  	 
    ![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/Kibana_check.png) 
@@ -57,26 +58,27 @@
 - Creating Playbook to include all the steps for Filebeat installation
 
  
- 	![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/Filebeat_install.png) 
+ 	![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/Filebeat_install.png)
 
 ## Part 1: Installing Filebeat on the DVWA Container
  
  
- 	![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/Filebeat_config.png) 
+	![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/Filebeat_config.png)
 
- ## Part 2: Creating the Filebeat Configuration File
+
+## Part 2: Creating the Filebeat Configuration File
 
  
- 	![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/ELK_playbook.png) 
+	![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/ELK_playbook.png)
  
 
 - The IP address of the ELK VM is updated in the filebeat-config.yml file and then copied to the remote VM.
 
  
- 	![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/ELK_configupdate.png) 
+ 	![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/ELK_configupdate.png)
 
 
-  	![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/ELK_configupdate2.png) 
+  	![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/ELK_configupdate2.png)
  
 
   	![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/copy_config.png) 
@@ -84,7 +86,7 @@
 ## Part 3: Creating the Filebeat Installation Play
 
  
- 	 ![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/filebeat_playbook.png) 
+	 ![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/filebeat_playbook.png)
 
 
 - Deploying the playbook on web servers.
@@ -112,7 +114,7 @@
 - Execution Success
 
  
- 	 ![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/SB_Execution.png) 
+	 ![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/SB_Execution.png) 
 
 - Checking Kibana for data upload
 
@@ -120,5 +122,5 @@
  	 ![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/data_pullsuccess.png) 
 
 
- 	 ![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/kibana_sb.png) 
+	 ![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/kibana_sb.png)
  
