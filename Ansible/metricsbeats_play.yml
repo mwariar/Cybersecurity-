@@ -1,4 +1,3 @@
- GNU nano 2.9.3                                                                                                                metricsbeats_play.yml                                                                                                                          
 ---
 - name: My first Playbook
   hosts: playbeat
@@ -29,7 +28,3 @@
     systemd:
       name: metricbeat
       enabled: yes
-
-
-
-
