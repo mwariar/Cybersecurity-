@@ -53,3 +53,77 @@ Network Security is a major factor in cloud computing and needs to be monitors a
 - Defends an organization against distributed denial-of-service (DDoS) attacks by shifting attack traffic from the corporate server to a public cloud provider
 - In terms of OSI model, load balancing happens between layers four to seven (L4-Transport, L5-Session, L6-Presentation and L7-Application).
 
+
+#### ELK Stack
+- Acts as a powerful monitoring tool by 
+	- Aggregating logs from all your systems and applications in **LogStash**
+	- Analyze these logs by using **ElasticSearch**
+	- Create visualizations for application and infrastructure monitoring, faster troubleshooting, security analytics etc. in **Kibana**
+- Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the auth and system logs.  
+- Auth and system logs have huge amount of data but we might need only specific details to monitor the logs. Beats application helps in extracting only the specific details to be stored in Logstash. Few examples are:
+	- FileBeat 
+		- Acts as an agent for forwarding and centralizing log data on your servers
+		- Monitors the log files or locations that you specify, collects log events, and forwards them either to Logstash for indexing
+
+	- MetricBeat
+		- Acts as an agent to periodically collect metrics from the operating system and from services running on the server. 
+		- Sends the metrics and statistics that it collects to Elasticsearch
+
+The configuration details of each machine may be found below.
+_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
+| Name   |  Function                                          | IP Address    |  Public IP   |  Operating System   |
+|--------|----------------------------------------------------|---------------|--------------|---------------------|
+|JBox    |SSH Gateway and Anisble Docker Container            |10.0.0.4       |13.83.87.195  |Linux                |
+|Web-1   |Virtual Server with PVBA Docker Container and Beats |10.0.0.5       |104.42.41.103 |Linux                |
+|Web-2   |Virtual Server with PVBA Docker Container and Beats |10.0.0.7       |104.42.41.103 |Linux                |
+|Web-3   |Virtual Server with PVBA Docker Container and Beats |10.0.0.6       |104.42.41.103 |Linux                |
+|Web-4   |Virtual Server with ELK Stack (Monitoring           |10.1.0.4       |13.83.87.195  |Linux                |
+
+
+![Virtual Machines](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Virtual Machines.PNG)
+
+### Access Policies
+
+The machines on the internal network are not exposed to the public Internet. 
+
+Only the Jump box machine **Jbox** can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+- 142.117.81.26 at Port 22
+
+Machines within the network can only be accessed by JumpBox Ansible Contatainer and Load Balancer.
+
+- ELK VM can be accessed by external cloud (allowed IP Address : 142.117.81.26) on port 5601.
+
+A summary of the access policies in place can be found in the table below.
+
+| Name     | Publicly Accessible | Allowed IP Addresses (Inbound)|
+|----------|---------------------|-------------------------------|
+| Jump Box | Yes                 | 142.117.81.26                 |
+| Web-1    | No (through LB)     | 10.0.0.4                      |
+| Web-2    | No (through LB)     | 10.0.0.4                      |
+| Web-3    | No (through LB)     | 10.0.0.4                      |
+| Web-4    | Yes                 | 142.117.81.26                 |
+
+### Elk Configuration
+
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because:
+- the feasibility of human errors reduced drastically 
+- the ease of provisioning and maintaining various VM/web servers 
+- Configration Management - 
+	- Change the configuration of an application, OS, or device; 
+	- Start and stop services
+	- Install or update applications
+	- Implement a security policy; 
+	- Perform a wide variety of other configuration tasks.
+- Deploying in n number of VMs by mantaining a single Host File
+
+The playbook implements the following tasks:
+
+````
+- Install Docker.io 
+- Install Python by running `apt install python3-pip`
+- Install Pip Docker Python Module
+- Increase the virtual Memory by running sysctl ansible module and increase the vm.max_map_count = 262144
+- Install the ELK Stack by pulling sebp/elk:761 container image from hub.docker.com and opening the respective ports (5601, 9200, 5044)
+- Enable the Docker Services on Starup
+
+````
