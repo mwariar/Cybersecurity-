@@ -10,10 +10,13 @@ The files in this repository were used to configure the network depicted below.
 Following Files can be used only to install only certain pieces of it, such as Filebeat, Metricbeat etc which helps to send log of specific details required to LogStash.
 
 [FileBeat Playbook File](https://github.com/mwariar/Cybersecurity-/blob/main/Ansible/filebeats_play.yml)
+
 [Metric Playbook File](https://github.com/mwariar/Cybersecurity-/blob/main/Ansible/metricsbeats_play.yml)
 
 Below mentioned configration Files are used for confuring IP addresses of VM machine w/ELK stack docker.
+
 [Playbeat Configration File](https://github.com/mwariar/Cybersecurity-/blob/main/Ansible/playbeats_config.yml)
+
 [Metric Configration File](https://github.com/mwariar/Cybersecurity-/blob/main/Ansible/metricbeats_config.yml)
 
 
@@ -143,11 +146,11 @@ This ELK server is configured to monitor the following machines:
 
 We have installed the following Beats on these machines:
 
-- ** FileBeat **
+- **FileBeat**
 	- Acts as an agent for forwarding and centralizing log data on your servers
 	- Monitors the log files or locations that you specify, collects log events, and forwards them either to Logstash for indexing
 
-- ** MetricBeat**
+- **MetricBeat**
 	- Acts as an agent to periodically collect metrics from the operating system and from services running on the server. 
 	- Sends the metrics and statistics that it collects to Elasticsearch
 
@@ -160,13 +163,15 @@ The steps to configure ELK stack has been mentioned ablove.
 SSH into the control node and follow the steps below to configure Beats into target machines:
 
 - Download the installation file for Filebeat by running below command
-**	`curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-oss-7.8.1-amd64.deb` **
+
+**`curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-oss-7.8.1-amd64.deb`**
 
 - Install the Filebeat Package by running below command
-**	`dpkg -i filebeat-oss-7.8.1-amd64.deb` **
+
+**`dpkg -i filebeat-oss-7.8.1-amd64.deb`**
 
 - Download the filebeat congfigration file to the container
-**	`curl https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat > /etc/ansible/filebeat-config.yml` **
+**`curl https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat > /etc/ansible/filebeat-config.yml`**
 
 - Update the host field with your ELK-VM's IP address. Copy this configration file from ansible container to target machine so that the logs are correctly shipped to Logstash and Kibana. You can use the copy ansible module
 ````	
