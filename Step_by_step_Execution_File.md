@@ -29,15 +29,17 @@
 
 - ELK Container Download 
  
- 	![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/ELK_playbook.png) 
+ 	![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/ELK_playbook.png)
 
 
 ## Part 4: Launching and Exposing the Container
 
- 	![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/Launch_playbook.png) 
+
+ [](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/Launch_playbook.png)
 
 	
-  	![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/Launch_playbook2.png) 
+  	[](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/Launch_playbook2.png)
+
 
 - SSH to Web-4 VM and check if docker image and container are running
 
