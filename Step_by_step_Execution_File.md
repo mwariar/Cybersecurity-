@@ -5,21 +5,21 @@
 
 - Created New vNet called RedTeamNetwork_ELK
 
- 	![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/VNet_ELK.png)
+  ![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/VNet_ELK.png)
  
 - Creating Peer connection between the 2 vNets in different locations
 
- 	![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/Peer_connection.png) 
+ ![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/Peer_connection.png)
  
 ## Part 2: Creating a New VM
 
 - New VM Web-4 created with IP 10.1.0.4 (Pub IP 20.51.230.217)	 
 
- 	![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/VM_ELK.png) 
+ ![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/VM_ELK.png)
 
 - Verify that it works as expected by connecting via SSH from the Ansible container to the VM Web-4
 
- 	![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/SSH.png) 
+ ![](https://github.com/mwariar/Cybersecurity-/blob/main/Images/Activities/SSH.png)
 
 ## Part 3: Downloading and Configuring the Container
 
